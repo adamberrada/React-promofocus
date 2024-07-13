@@ -55,3 +55,6 @@ User Story #26: When a countdown reaches zero (NOTE: timer MUST reach 00:00), a 
 User Story #27: The audio element with id="beep" must be 1 second or longer.
 
 User Story #28: The audio element with id of beep must stop playing and be rewound to the beginning when the element with the id of reset is clicked.
+
+I've successfully completed the project challenges for creating and designing my project, but I'm having trouble passing tests 10 and 11. Despite my code working as expected, I'm not able to clear these tests. If you could provide any additional guidance or assistance, I would greatly appreciate it. Thank you!
+My local-host_server: https://react-promofocus-app.netlify.app
