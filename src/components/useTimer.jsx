@@ -55,15 +55,11 @@ const useTimer = (initialSessionMinutes, initialSessionSeconds, initialBreakMinu
     }, 1000);
   }, [initialSessionMinutes, initialSessionSeconds, initialBreakMinutes,initialBreakSeconds]);
 
-
-
   const pauseTimer = useCallback(() => {
       clearInterval(timerInterval.current);
     timerInterval.current = null;
   }, []);
   
-
-
   const resetTimer = useCallback(() => {
     setMinutes(initialSessionMinutes);
     setSeconds(initialSessionSeconds);
