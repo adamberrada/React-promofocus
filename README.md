@@ -1,4 +1,4 @@
-#freeCodeCamp Challenge 25 + 5 Clock:
+# freeCodeCamp Challenge 25 + 5 Clock:
 
 User Story #1: I can see an element with id="break-label" that contains a string (e.g. "Break Length").
 
