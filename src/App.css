@@ -8,6 +8,7 @@ body {
     height: 600px;
     margin: 0;
     padding: 0;
+    transition: background-color 1s;
 }
 .project-container {
     
@@ -46,7 +47,7 @@ label{
 
 .btn {
     font-weight: bold;
- 
+    transition: background-color 0.5s;
     border: none;
     color: yellow;
     padding: 2px;

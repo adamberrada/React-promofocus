@@ -14,7 +14,8 @@ function insideclock({
 
    const BtnStyle = {
     height: '20px',
-    backgroundColor: theme.buttonColor
+    backgroundColor: theme.buttonColor,
+    
    }
    const labelStyle ={
     color: theme.buttonTextColor

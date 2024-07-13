@@ -69,6 +69,7 @@ function App() {
         families: ['Sawarabi Mincho']
       }
     })
+    document.body.style.transition = 'background-color 0.5s';
     document.body.style.backgroundColor = theme.buttonColor;
     document.body.style.color = theme.color;
 
