@@ -4,7 +4,6 @@ import { useState, useRef, useEffect , useCallback } from 'react';
 const useTimer = (initialSessionMinutes, initialSessionSeconds, initialBreakMinutes, initialBreakSeconds, resetBreak, resetSession) => {
   const [minutes, setMinutes] = useState(initialSessionMinutes);
   const [seconds, setSeconds] = useState(initialSessionSeconds);
-  const [isPaused, setIsPaused] = useState(false); 
   const [isSession, setIsSession] = useState(true);
   const timerInterval = useRef(null);
 
@@ -22,7 +21,6 @@ const useTimer = (initialSessionMinutes, initialSessionSeconds, initialBreakMinu
    };
 
   const sessionTimer = useCallback(() => {
-    if(isPaused) return;
     if (timerInterval.current!== null) return;  // Prevent multiple intervals
     timerInterval.current = setInterval(() => {
       setSeconds((prevSeconds) => {
@@ -55,30 +53,22 @@ const useTimer = (initialSessionMinutes, initialSessionSeconds, initialBreakMinu
         return prevSeconds;
       });
     }, 1000);
-  }, [initialSessionMinutes, initialSessionSeconds, initialBreakMinutes,initialBreakSeconds , isPaused]);
+  }, [initialSessionMinutes, initialSessionSeconds, initialBreakMinutes,initialBreakSeconds]);
 
 
 
   const pauseTimer = useCallback(() => {
-    setIsPaused(true);
-    if (timerInterval.current) {
       clearInterval(timerInterval.current);
-    }
-  }, [setIsPaused, timerInterval]);
+    timerInterval.current = null;
+  }, []);
   
-  const resumeTimer = useCallback(() => {
-    setIsPaused(false);
-    if (!timerInterval.current) {
-      sessionTimer();
-    }
-  }, [setIsPaused, sessionTimer, timerInterval]);
+
 
   const resetTimer = useCallback(() => {
     setMinutes(initialSessionMinutes);
     setSeconds(initialSessionSeconds);
     clearInterval(timerInterval.current);
     setIsSession(true);
-    setIsPaused(false); 
     timerInterval.current = null;
     stopAudio();
     resetBreak();
@@ -93,7 +83,7 @@ const useTimer = (initialSessionMinutes, initialSessionSeconds, initialBreakMinu
   }, [initialSessionMinutes, initialSessionSeconds]);
 
  
-  return { minutes, seconds,isSession, isWarning, sessionTimer, resumeTimer,  pauseTimer, resetTimer };
+  return { minutes, seconds,isSession, isWarning, sessionTimer,  pauseTimer, resetTimer };
 };
 
 export default useTimer;
